@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  output: 'export',
+  trailingSlash: true,
   images: {
-    loader: 'akamai',
-    path: '',
+    unoptimized: true,
   },
   env: {
     PUBLIC_URL: '/',
-  }
+  },
+  basePath: process.env.NODE_ENV === 'production' ? '/climate-portal' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/climate-portal/' : '',
 }
 
 module.exports = nextConfig
